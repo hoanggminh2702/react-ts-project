@@ -23,8 +23,7 @@ const Layout = () => {
           onCollapse={toggleMenu}
           theme="light"
           style={{
-            paddingBottom: 64,
-            height: "calc(100vh - 64px)",
+            height: "100vh",
           }}
         >
           <Menu>
@@ -37,7 +36,7 @@ const Layout = () => {
           </Menu>
         </Sider>
       </AntLayout>
-      <Footer>Footer</Footer>
+      {/* <Footer>Footer</Footer> */}
     </AntLayout>
   );
 };
