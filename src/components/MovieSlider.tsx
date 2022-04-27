@@ -90,6 +90,7 @@ const MovieSlider = ({ items, slidesPerView = 3, arrowWidth }: Props) => {
         loop
         className="movie-slider"
         slidesPerView={slidesPerView}
+        spaceBetween={16}
       >
         {items.map((movie, index) => {
           return (

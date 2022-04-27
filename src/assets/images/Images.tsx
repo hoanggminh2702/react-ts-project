@@ -23,6 +23,27 @@ const Images = {
       },
     };
   },
+
+  get aboutDreamwork() {
+    return {
+      get campus() {
+        return new URL(
+          "./about-section/about-creative-haven.jpg",
+          import.meta.url
+        ).href;
+      },
+      get movies() {
+        return new URL("./about-section/about-movies.jpg", import.meta.url)
+          .href;
+      },
+      get tv() {
+        return new URL("./about-section/about-tv.jpg", import.meta.url).href;
+      },
+      get tech() {
+        return new URL("./about-section/about-tech.jpg", import.meta.url).href;
+      },
+    };
+  },
 };
 
 export default Images;
