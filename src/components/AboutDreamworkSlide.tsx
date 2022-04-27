@@ -57,10 +57,16 @@ const AboutDreamworkSlide = (props: Props) => {
         centeredSlides
         centeredSlidesBounds
       >
-        {aboutDreamworkData.map((item) => {
+        {aboutDreamworkData.map((item, index) => {
           return (
             <SwiperSlide key={item.title}>
-              <div className="about-dreamwork-wrapper">
+              <div
+                className="about-dreamwork-wrapper"
+                data-aos="fade-up"
+                data-aos-duration="500"
+                data-aos-easing="ease-in-out"
+                data-aos-delay={`${index * 100}`}
+              >
                 <div
                   className="about-dreamwork"
                   style={{
