@@ -1,0 +1,45 @@
+.container-slider {
+  width: 100%;
+}
+
+.change-slide-wrapper {
+  position: relative;
+  padding: 16px;
+
+  .change-slide-btn {
+    background-color: white;
+    border-radius: 999px;
+
+    position: absolute;
+    z-index: 999;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transform: translateY(-50%);
+    transition: all linear 0.15s;
+
+    .anticon {
+      transition: all linear 0.05s;
+    }
+  }
+
+  .next-btn {
+    right: 0;
+    top: 50%;
+  }
+
+  .prev-btn {
+    left: 0;
+    top: 50%;
+  }
+
+  .change-slide-btn:hover {
+    cursor: pointer;
+    transform: translateY(-50%) scale(1.2);
+    .anticon {
+      color: $hover-color;
+    }
+  }
+}
