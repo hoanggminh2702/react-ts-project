@@ -10,10 +10,12 @@ const AboutDreamworkSlide = (props: Props) => {
   const sliderRef = useRef<SliderRefType | null>(null);
   const [curIndex, setCurIndex] = useState<number>(0);
 
+  // Handle When Click Change Slide
   const handleClickChangeSlide = useCallback((index: number) => {
     setCurIndex(index);
   }, []);
 
+  // Handle When Change Slide => Set Current Index
   const handleSlideChange = useCallback((e: ISwiper) => {
     setCurIndex(e.realIndex);
   }, []);
@@ -22,6 +24,7 @@ const AboutDreamworkSlide = (props: Props) => {
     e.on("slideChange", handleSlideChange);
   }, []);
 
+  // When Current Index Change => Change Slide
   useEffect(() => {
     if (sliderRef.current) {
       sliderRef.current.toRealIndex(curIndex);
