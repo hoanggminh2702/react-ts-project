@@ -1,0 +1,94 @@
+#main-layout {
+  $header-height: 65px;
+  // Header
+  .ant-page-header {
+    padding: 0 50px;
+    box-shadow: 0 0 10px rgb(0 0 0 / 20%);
+
+    width: 100%;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+  }
+
+  .ant-page-header-heading {
+    align-items: stretch;
+  }
+
+  .ant-page-header-heading-left {
+    margin: 0;
+  }
+
+  .ant-page-header-heading-extra {
+    margin: 0;
+  }
+
+  .ant-page-header-ghost {
+    background-color: white;
+  }
+
+  .page-title {
+    color: $main-text-color;
+    text-transform: uppercase;
+    font-size: 20px;
+    font-weight: 900;
+    letter-spacing: 1px;
+
+    margin: 0;
+  }
+
+  .social-contact {
+    color: $main-text-color;
+
+    .anticon {
+      transition: all linear 0.2s;
+    }
+
+    .anticon + .anticon {
+      margin-left: 8px;
+      font-size: 14px;
+    }
+
+    .anticon:hover {
+      color: $hover-color;
+      cursor: pointer;
+    }
+  }
+
+  .nav-menu {
+    display: flex;
+  }
+
+  .nav-item {
+    color: $main-text-color;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 20px 16px;
+    margin: 0;
+    border: 2px solid transparent;
+
+    transition: all linear 0.2s;
+  }
+
+  .nav-item:hover {
+    cursor: pointer;
+    color: $hover-color;
+    border-bottom-color: $hover-color;
+  }
+
+  .nav-item + .nav-item {
+  }
+
+  .ant-layout-content {
+    padding-top: calc($header-height + 6px);
+  }
+
+  //   Side
+  .ant-layout-sider {
+    padding-top: $header-height;
+  }
+}
