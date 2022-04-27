@@ -9,8 +9,9 @@ const HomePage = (props: Props) => {
     <div
       className="container"
       style={{
-        maxWidth: 768,
+        maxWidth: 1024,
         width: "100%",
+        margin: "auto",
       }}
     >
       <MovieSlider items={moviesData} />

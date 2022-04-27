@@ -5,10 +5,6 @@ import { MovieType } from "../data/data";
 import MovieCard from "./MovieCard";
 import Slider, { SliderRefType } from "./Slider";
 
-type Props = {
-  items: Array<MovieType>;
-};
-
 type ChangeSlideArrowType = {
   width?: number;
 
@@ -18,7 +14,7 @@ type ChangeSlideArrowType = {
 };
 
 const ChangeSlideArrow: React.FC<ChangeSlideArrowType> = memo(
-  ({ next, prev, width = 40, children }) => {
+  ({ next, prev, width = 60, children }) => {
     // useCallback to avoid uneccessary re-render
     const nextSlide = useCallback(
       (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
@@ -67,7 +63,13 @@ const ChangeSlideArrow: React.FC<ChangeSlideArrowType> = memo(
   }
 );
 
-const MovieSlider = ({ items }: Props) => {
+type Props = {
+  items: Array<MovieType>;
+  slidesPerView?: number;
+  arrowWidth?: number;
+};
+
+const MovieSlider = ({ items, slidesPerView = 3, arrowWidth }: Props) => {
   const sliderRef = useRef<SliderRefType | null>(null);
 
   const handleNextSlide = useCallback(() => {
@@ -78,8 +80,17 @@ const MovieSlider = ({ items }: Props) => {
     sliderRef.current?.prev();
   }, [sliderRef.current]);
   return (
-    <ChangeSlideArrow next={handleNextSlide} prev={handlePrevSlide}>
-      <Slider ref={sliderRef} loop className="movie-slider" slidesPerView={3}>
+    <ChangeSlideArrow
+      width={arrowWidth}
+      next={handleNextSlide}
+      prev={handlePrevSlide}
+    >
+      <Slider
+        ref={sliderRef}
+        loop
+        className="movie-slider"
+        slidesPerView={slidesPerView}
+      >
         {items.map((movie) => {
           return (
             <SwiperSlide key={movie.id} className="movie-slide">
