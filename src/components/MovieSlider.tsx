@@ -91,10 +91,10 @@ const MovieSlider = ({ items, slidesPerView = 3, arrowWidth }: Props) => {
         className="movie-slider"
         slidesPerView={slidesPerView}
       >
-        {items.map((movie) => {
+        {items.map((movie, index) => {
           return (
             <SwiperSlide key={movie.id} className="movie-slide">
-              <MovieCard img={movie.img} />
+              <MovieCard index={index} img={movie.img} />
             </SwiperSlide>
           );
         })}

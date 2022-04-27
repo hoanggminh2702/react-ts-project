@@ -14,6 +14,12 @@ const HomePage = (props: Props) => {
         margin: "auto",
       }}
     >
+      <div
+        className="test"
+        style={{
+          height: "100vh",
+        }}
+      ></div>
       <MovieSlider items={moviesData} />
     </div>
   );

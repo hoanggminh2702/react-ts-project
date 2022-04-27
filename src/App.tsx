@@ -1,3 +1,4 @@
+import Aos from "aos";
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.scss";
@@ -8,6 +9,7 @@ import Products from "./pages/Products";
 type Props = {};
 
 const App = (props: Props) => {
+  Aos.init();
   return (
     <BrowserRouter>
       <Routes>
