@@ -1,57 +1,75 @@
-import React from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
+import ISwiper from "swiper";
 import { SwiperSlide } from "swiper/react";
-import Images from "../assets/images/Images";
-import Slider from "./Slider";
+import { aboutDreamworkData } from "../data/data";
+import Slider, { SliderRefType } from "./Slider";
 
 type Props = {};
 
-type AboutDreamworkType = {
-  title: string;
-  img: string;
-};
-
-const aboutDreamworkData: Array<AboutDreamworkType> = [
-  {
-    title: "campus",
-    img: Images.aboutDreamwork.campus,
-  },
-  {
-    title: "movies",
-    img: Images.aboutDreamwork.movies,
-  },
-  {
-    title: "tv",
-    img: Images.aboutDreamwork.tv,
-  },
-  {
-    title: "tech",
-    img: Images.aboutDreamwork.tech,
-  },
-];
-
 const AboutDreamworkSlide = (props: Props) => {
+  const sliderRef = useRef<SliderRefType | null>(null);
+  const [curIndex, setCurIndex] = useState<number>(0);
+
+  const handleClickChangeSlide = useCallback((index: number) => {
+    setCurIndex(index);
+  }, []);
+
+  const handleSlideChange = useCallback((e: ISwiper) => {
+    setCurIndex(e.realIndex);
+  }, []);
+
+  const handleOnSwiper = useCallback((e: ISwiper) => {
+    e.on("slideChange", handleSlideChange);
+  }, []);
+
+  useEffect(() => {
+    if (sliderRef.current) {
+      sliderRef.current.toRealIndex(curIndex);
+    }
+  }, [sliderRef.current?.toRealIndex, curIndex]);
   return (
-    <Slider
-      slidesPerView={3}
-      spaceBetween={120}
-      className="about-dreamwork-slider"
-      centeredSlides
-    >
-      {aboutDreamworkData.map((item) => {
-        return (
-          <SwiperSlide key={item.title}>
-            <div className="about-dreamwork-wrapper">
-              <div
-                className="about-dreamwork"
-                style={{
-                  backgroundImage: `url(${item.img})`,
-                }}
-              ></div>
+    <>
+      <div className="about-dreamwork-text">
+        {aboutDreamworkData.map((item, index) => {
+          return (
+            <div
+              className={`about-dreamwork-item ${
+                index === curIndex ? "active-index" : ""
+              }`}
+              key={`${item.title}-${index}`}
+              onClick={() => handleClickChangeSlide(index)}
+            >
+              {item.title}
             </div>
-          </SwiperSlide>
-        );
-      })}
-    </Slider>
+          );
+        })}
+      </div>
+      <Slider
+        ref={sliderRef}
+        onSwiper={handleOnSwiper}
+        slidesPerView={3}
+        spaceBetween={120}
+        className="about-dreamwork-slider"
+        loop
+        centeredSlides
+        centeredSlidesBounds
+      >
+        {aboutDreamworkData.map((item) => {
+          return (
+            <SwiperSlide key={item.title}>
+              <div className="about-dreamwork-wrapper">
+                <div
+                  className="about-dreamwork"
+                  style={{
+                    backgroundImage: `url(${item.img})`,
+                  }}
+                ></div>
+              </div>
+            </SwiperSlide>
+          );
+        })}
+      </Slider>
+    </>
   );
 };
 

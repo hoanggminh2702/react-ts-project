@@ -11,3 +11,28 @@
     background-size: 100% 100%;
   }
 }
+
+.about-dreamwork-text {
+  display: flex;
+  margin: auto;
+  width: 600px;
+  justify-content: space-around;
+  margin-bottom: 12px;
+}
+
+.about-dreamwork-item {
+  padding: 12px 24px;
+  transition: all linear 0.2s;
+  font-size: 20px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.about-dreamwork-item.active-index {
+  color: $hover-color;
+}
+
+.about-dreamwork-item:hover {
+  color: $hover-color;
+  cursor: pointer;
+}

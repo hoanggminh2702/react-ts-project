@@ -29,3 +29,28 @@ export const moviesData: Array<MovieType> = [
     img: Images.movies.bossBaby,
   },
 ];
+
+// About Dreamwork
+export type AboutDreamworkType = {
+  title: string;
+  img: string;
+};
+
+export const aboutDreamworkData: Array<AboutDreamworkType> = [
+  {
+    title: "campus",
+    img: Images.aboutDreamwork.campus,
+  },
+  {
+    title: "movies",
+    img: Images.aboutDreamwork.movies,
+  },
+  {
+    title: "tv",
+    img: Images.aboutDreamwork.tv,
+  },
+  {
+    title: "tech",
+    img: Images.aboutDreamwork.tech,
+  },
+];
