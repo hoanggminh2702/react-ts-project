@@ -5,7 +5,7 @@ import { Link, Outlet } from "react-router-dom";
 import NavMenu from "./NavMenu";
 import SocialContact from "./SocialContact";
 
-const { Header, Footer, Sider, Content } = AntLayout;
+const { Sider, Content } = AntLayout;
 
 const Layout = () => {
   const [showMenu, setShowMenu] = useState(true);
@@ -17,7 +17,10 @@ const Layout = () => {
       <PageHeader
         ghost
         title={<h1 className="page-title">Ichi Entertainment</h1>}
-        extra={[<SocialContact />, <NavMenu />]}
+        extra={[
+          <SocialContact key={"social-contact"} />,
+          <NavMenu key={"nav-menu"} />,
+        ]}
       ></PageHeader>
       <AntLayout hasSider>
         <Content>
@@ -29,14 +32,14 @@ const Layout = () => {
           onCollapse={toggleMenu}
           theme="dark"
           style={{
-            height: "100vh",
+            minHeight: "100vh",
           }}
         >
-          <Menu theme="dark">
-            <Menu.Item icon={<HomeOutlined />}>
+          <Menu defaultSelectedKeys={["1"]} theme="dark">
+            <Menu.Item key={"1"} icon={<HomeOutlined />}>
               <Link to="/">Home</Link>
             </Menu.Item>
-            <Menu.Item icon={<DesktopOutlined />}>
+            <Menu.Item key={"2"} icon={<DesktopOutlined />}>
               <Link to="/products">Products</Link>
             </Menu.Item>
           </Menu>

@@ -90,5 +90,11 @@
   //   Side
   .ant-layout-sider {
     padding-top: $header-height;
+
+    .ant-menu {
+      position: sticky;
+      top: $header-height;
+      left: 0;
+    }
   }
 }

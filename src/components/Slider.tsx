@@ -15,6 +15,7 @@ type Props = {
 export type SliderRefType = {
   prev: (speed?: number) => void;
   next: (speed?: number) => void;
+  to: (slide: number, speed: number) => void;
 };
 
 const Slider: ForwardRefRenderFunction<SliderRefType, Props> = (
@@ -45,6 +46,14 @@ const Slider: ForwardRefRenderFunction<SliderRefType, Props> = (
     [swiperController]
   );
 
+  //   This is not working correctly with loop, will update later
+  const to = useCallback(
+    (slide: number, cusomSpeed: number) => {
+      swiperController?.slideTo(slide, cusomSpeed || speed);
+    },
+    [swiperController]
+  );
+
   // Pass prev and next function outside
   useImperativeHandle(
     ref,
@@ -52,6 +61,7 @@ const Slider: ForwardRefRenderFunction<SliderRefType, Props> = (
       return {
         prev,
         next,
+        to,
       };
     },
     [onSwiper, swiperController]
