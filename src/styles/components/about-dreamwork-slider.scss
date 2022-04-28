@@ -17,6 +17,15 @@
     width: 100%;
   }
 
+  .swiper-slide {
+    transition: all ease-in 0.2s;
+    padding: 1.5%;
+  }
+
+  .swiper-slide-active {
+    padding: 0;
+  }
+
   .about-dreamwork {
     width: 100%;
     padding-top: calc(1120 / 1880 * 100%);

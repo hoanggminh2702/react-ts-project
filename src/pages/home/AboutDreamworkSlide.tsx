@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
-import ISwiper from "swiper";
+import ISwiper, { Zoom } from "swiper";
+import "swiper/css/zoom";
 import { SwiperSlide } from "swiper/react";
 import Slider, { SliderRefType } from "../../components/Slider";
 import { aboutDreamworkData } from "../../data/data";
@@ -51,11 +52,12 @@ const AboutDreamworkSlide = (props: Props) => {
         ref={sliderRef}
         onSwiper={handleOnSwiper}
         slidesPerView={3}
-        spaceBetween={120}
+        spaceBetween={80}
         className="about-dreamwork-slider"
         loop
         centeredSlides
-        centeredSlidesBounds
+        modules={[Zoom]}
+        zoom
       >
         {aboutDreamworkData.map((item, index) => {
           return (
