@@ -1,8 +1,8 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import ISwiper from "swiper";
 import { SwiperSlide } from "swiper/react";
-import { aboutDreamworkData } from "../data/data";
-import Slider, { SliderRefType } from "./Slider";
+import Slider, { SliderRefType } from "../../components/Slider";
+import { aboutDreamworkData } from "../../data/data";
 
 type Props = {};
 

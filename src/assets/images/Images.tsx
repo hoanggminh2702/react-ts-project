@@ -44,6 +44,17 @@ const Images = {
       },
     };
   },
+
+  get stayInTouch() {
+    return {
+      get trolls() {
+        return new URL(
+          "./stay-in-touch-section/signup-trolls.jpg",
+          import.meta.url
+        ).href;
+      },
+    };
+  },
 };
 
 export default Images;

@@ -1,3 +1,18 @@
+.about-dream-work {
+  width: 100%;
+  padding: 110px 40px 80px;
+  margin: 100px 0;
+
+  background-color: $main-text-color;
+
+  &-title {
+    font-size: 60px;
+    text-transform: uppercase;
+    color: #fff;
+    font-weight: 700;
+    text-align: center;
+  }
+}
 .about-dreamwork-slider {
   .about-dreamwork-wrapper {
     width: 100%;
@@ -13,26 +28,44 @@
 }
 
 .about-dreamwork-text {
+  position: relative;
   display: flex;
   margin: auto;
-  width: 600px;
+  width: fit-content;
   justify-content: space-around;
-  margin-bottom: 12px;
+
+  margin-bottom: 40px;
+
+  &::after {
+    content: "";
+    width: 100%;
+    border-bottom: 3px solid rgba(255, 255, 255, 0.5);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }
 }
 
 .about-dreamwork-item {
-  padding: 12px 24px;
+  color: rgba(255, 255, 255, 0.8);
+  padding: 24px 36px;
   transition: all linear 0.2s;
   font-size: 20px;
   font-weight: 600;
   text-transform: uppercase;
+  border-bottom: 3px solid transparent;
+  z-index: 1;
 }
 
 .about-dreamwork-item.active-index {
   color: $hover-color;
+  border-bottom-color: $hover-color;
 }
 
 .about-dreamwork-item:hover {
-  color: $hover-color;
+  color: rgba(255, 255, 255, 1);
+
   cursor: pointer;
+
+  border-bottom-color: $hover-color;
 }
