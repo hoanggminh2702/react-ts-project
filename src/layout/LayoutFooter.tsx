@@ -11,7 +11,13 @@ type Props = {};
 
 const LayoutFooter = (props: Props) => {
   return (
-    <div className="layout-footer">
+    <div
+      className="layout-footer"
+      data-aos="fade-in"
+      data-aos-easing="ease-in-out"
+      data-aos-duration="500"
+      data-aos-delay="300"
+    >
       <p className="footer-title">ICHI ENTERTAINMENT</p>
       <ul className="footer-menu">
         {footerData.map((item, index) => {
