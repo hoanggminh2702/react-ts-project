@@ -1,7 +1,9 @@
 import { DesktopOutlined, HomeOutlined } from "@ant-design/icons";
 import { Layout as AntLayout, Menu, PageHeader } from "antd";
+import { Footer } from "antd/lib/layout/layout";
 import React, { useCallback, useState } from "react";
 import { Link, Outlet } from "react-router-dom";
+import LayoutFooter from "./LayoutFooter";
 import NavMenu from "./NavMenu";
 import SocialContact from "./SocialContact";
 
@@ -30,6 +32,7 @@ const Layout = () => {
           collapsible
           collapsed={!showMenu}
           onCollapse={toggleMenu}
+          trigger={null}
           theme="dark"
           style={{
             minHeight: "100vh",
@@ -45,7 +48,9 @@ const Layout = () => {
           </Menu>
         </Sider>
       </AntLayout>
-      {/* <Footer>Footer</Footer> */}
+      <Footer hasSider>
+        <LayoutFooter />
+      </Footer>
     </AntLayout>
   );
 };

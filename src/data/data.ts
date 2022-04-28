@@ -54,3 +54,13 @@ export const aboutDreamworkData: Array<AboutDreamworkType> = [
     img: Images.aboutDreamwork.tech,
   },
 ];
+
+export const footerData = [
+  "Home",
+  "Movies",
+  "TV Shows",
+  "About",
+  "Careers",
+  "Culture",
+  "Classics",
+];

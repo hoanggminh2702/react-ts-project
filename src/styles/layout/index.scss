@@ -88,7 +88,7 @@
     background-color: #fff;
   }
 
-  //   Side
+  // Sider
   .ant-layout-sider {
     padding-top: $header-height;
 
@@ -96,6 +96,72 @@
       position: sticky;
       top: $header-height;
       left: 0;
+    }
+  }
+
+  // Footer
+  .ant-layout-footer {
+    $white-opacity: rgba(255, 255, 255, 0.6);
+    background-color: $main-text-color;
+    padding: 20px 0 100px;
+
+    .layout-footer {
+      width: fit-content;
+      margin: auto;
+    }
+
+    .footer-title {
+      text-transform: uppercase;
+      color: white;
+      font-weight: 700;
+      font-size: 15px;
+      margin-bottom: 4px;
+      text-align: center;
+      width: 100%;
+    }
+
+    .footer-menu {
+      display: flex;
+    }
+
+    .footer-item {
+      text-transform: uppercase;
+      color: $white-opacity;
+      font-size: 13px;
+      font-weight: 500;
+      padding: 12px 18px;
+      list-style-type: none;
+      display: block;
+
+      transition: all linear 0.2s;
+    }
+
+    .footer-item:hover {
+      color: rgba(255, 255, 255, 1);
+      cursor: pointer;
+    }
+
+    .social-contact {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .follow-text {
+      color: $white-opacity !important;
+      font-size: 13px;
+      font-weight: 600;
+      text-transform: uppercase;
+      margin: 12px auto;
+    }
+
+    .anticon {
+      font-size: 14px;
+      color: $unselected;
+    }
+
+    .anticon + .anticon {
+      margin-left: 24px;
     }
   }
 }
