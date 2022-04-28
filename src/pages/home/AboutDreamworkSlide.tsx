@@ -52,7 +52,7 @@ const AboutDreamworkSlide = (props: Props) => {
         ref={sliderRef}
         onSwiper={handleOnSwiper}
         slidesPerView={3}
-        spaceBetween={80}
+        spaceBetween={40}
         className="about-dreamwork-slider"
         loop
         centeredSlides
