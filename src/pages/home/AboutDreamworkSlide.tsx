@@ -7,9 +7,21 @@ import { aboutDreamworkData } from "../../data/data";
 
 type Props = {};
 
+// Wrong calculated
+// const calculatedRealIndex = (curSlide: number, slide: number): number => {
+//   if (curSlide % slide < slide) return curSlide % slide;
+
+//   return calculatedRealIndex(curSlide % slide, slide);
+// };
+
 const AboutDreamworkSlide = (props: Props) => {
   const sliderRef = useRef<SliderRefType | null>(null);
   const [curIndex, setCurIndex] = useState<number>(0);
+
+  const clickedFunction = useCallback((e: ISwiper): void => {
+    if (e.clickedIndex > e.activeIndex) e.slideNext();
+    else if (e.clickedIndex < e.activeIndex) e.slidePrev();
+  }, []);
 
   // Handle When Click Change Slide
   const handleClickChangeSlide = useCallback((index: number) => {
@@ -21,8 +33,14 @@ const AboutDreamworkSlide = (props: Props) => {
     setCurIndex(e.realIndex);
   }, []);
 
+  // Handle When click to a Slide
+  const handleClickToChangeSlide = useCallback((e: ISwiper) => {
+    clickedFunction(e);
+  }, []);
+
   const handleOnSwiper = useCallback((e: ISwiper) => {
     e.on("slideChange", handleSlideChange);
+    e.on("click", handleClickToChangeSlide);
   }, []);
 
   // When Current Index Change => Change Slide
@@ -31,6 +49,7 @@ const AboutDreamworkSlide = (props: Props) => {
       sliderRef.current.toRealIndex(curIndex);
     }
   }, [sliderRef.current?.toRealIndex, curIndex]);
+
   return (
     <>
       <div className="about-dreamwork-text">
