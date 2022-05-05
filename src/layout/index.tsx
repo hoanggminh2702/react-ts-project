@@ -1,8 +1,7 @@
-import { DesktopOutlined, HomeOutlined } from "@ant-design/icons";
-import { Layout as AntLayout, Menu, PageHeader } from "antd";
+import { Layout as AntLayout, PageHeader } from "antd";
 import { Footer } from "antd/lib/layout/layout";
 import React, { useCallback, useState } from "react";
-import { Link, Outlet } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import LayoutFooter from "./LayoutFooter";
 import NavMenu from "./NavMenu";
 import SocialContact from "./SocialContact";
@@ -37,16 +36,7 @@ const Layout = () => {
           style={{
             minHeight: "100vh",
           }}
-        >
-          <Menu defaultSelectedKeys={["1"]} theme="dark">
-            <Menu.Item key={"1"} icon={<HomeOutlined />}>
-              <Link to="/">Home</Link>
-            </Menu.Item>
-            <Menu.Item key={"2"} icon={<DesktopOutlined />}>
-              <Link to="/products">Products</Link>
-            </Menu.Item>
-          </Menu>
-        </Sider>
+        ></Sider>
       </AntLayout>
       <Footer hasSider>
         <LayoutFooter />
