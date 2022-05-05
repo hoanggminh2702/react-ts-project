@@ -1,7 +1,9 @@
 import React, {
   forwardRef,
   ForwardRefRenderFunction,
+  memo,
   useCallback,
+  useEffect,
   useImperativeHandle,
   useState,
 } from "react";
@@ -10,6 +12,7 @@ import { Swiper, SwiperProps } from "swiper/react";
 
 type Props = {
   speed?: number;
+  onSlideClick?: (swiper: ISwiper, e?: MouseEvent | TouchEvent) => void;
 } & SwiperProps;
 
 export type SliderRefType = {
@@ -20,7 +23,7 @@ export type SliderRefType = {
 };
 
 const Slider: ForwardRefRenderFunction<SliderRefType, Props> = (
-  { children, onSwiper, speed = 500, ...props },
+  { children, onSwiper, speed = 500, onSlideClick, ...props },
   ref
 ) => {
   const [swiperController, setSwiperController] = useState<
@@ -55,6 +58,18 @@ const Slider: ForwardRefRenderFunction<SliderRefType, Props> = (
     [swiperController]
   );
 
+  useEffect(() => {
+    if (swiperController && onSlideClick) {
+      swiperController.on("click", onSlideClick);
+    }
+
+    return () => {
+      if (onSlideClick) {
+        swiperController?.off("click", onSlideClick);
+      }
+    };
+  }, [swiperController, onSlideClick]);
+
   const toRealIndex = useCallback(
     (slide: number, cusomSpeed?: number) => {
       swiperController?.slideToLoop(slide, cusomSpeed || speed);
@@ -83,4 +98,4 @@ const Slider: ForwardRefRenderFunction<SliderRefType, Props> = (
   );
 };
 
-export default forwardRef(Slider);
+export default memo(forwardRef(Slider));
