@@ -1,10 +1,10 @@
+import "@/App.scss";
+import Layout from "@/layout";
+import HomePage from "@/pages/home";
+import Products from "@/pages/Products";
 import Aos from "aos";
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import "~/App.scss";
-import Layout from "~/layout";
-import HomePage from "~/pages/home";
-import Products from "~/pages/Products";
 
 type Props = {};
 

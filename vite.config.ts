@@ -9,8 +9,16 @@ export default defineConfig({
     port: 3001,
   },
   resolve: {
-    alias: {
-      "~": path.resolve(__dirname, "./src"),
-    },
+    alias: [
+      {
+        find: "src",
+        replacement: path.resolve(__dirname, "./src"),
+      },
+      {
+        find: "@",
+        replacement: path.resolve(__dirname, "./src"),
+      },
+      { find: /^~/, replacement: path.resolve(__dirname) },
+    ],
   },
 });

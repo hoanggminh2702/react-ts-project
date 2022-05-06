@@ -1,4 +1,4 @@
-import { CustomRoute } from "~/types/route";
+import { CustomRoute } from "@/types/route";
 
 export const routes: Array<CustomRoute> = [
   {
