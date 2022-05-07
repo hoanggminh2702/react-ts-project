@@ -1,7 +1,8 @@
 import NotFound from "@/components/NotFound";
 import HomePage from "@/pages/home";
 import Products from "@/pages/Products";
-import { CustomRoute } from "@/types/route";
+import { CustomRoute, MyRoute } from "@/types/route";
+import { genKeyFollowName } from "@/utils/utils";
 
 export const routes: Array<CustomRoute> = [
   {
@@ -63,55 +64,55 @@ export const routes: Array<CustomRoute> = [
     name: "Dịch vụ Media Marketing",
     key: "media-marketing-services",
     path: "/media-marketing-services",
-    component: NotFound
+    component: NotFound,
   },
   {
     name: "Cho thuê Studio",
     key: "studio",
     path: "/studio-for-rent",
-    component: NotFound
+    component: NotFound,
   },
   {
     name: "Cho thuê thiết bị",
     key: "equipments",
     path: "/equipments-for-rent",
-    component: NotFound
+    component: NotFound,
   },
   {
     name: "Cho thuê nghệ sĩ",
     key: "artist",
     path: "/artists-for-rent",
-    component: NotFound
+    component: NotFound,
   },
   {
     name: "Báo giá",
     key: "pricing",
     path: "/pricing",
-    component: NotFound
+    component: NotFound,
   },
   {
     name: "Các bộ sưu tập",
     key: "collections",
     path: "/collections",
-    component: NotFound
+    component: NotFound,
   },
   {
     name: "Điều khoản",
     key: "terms",
     path: "/terms",
-    component: NotFound
+    component: NotFound,
   },
   {
     name: "Khuyến mãi",
     key: "promotion",
     path: "/promotion",
-    component: NotFound
+    component: NotFound,
   },
   {
     name: "Liên hệ",
     key: "contact",
     path: "/contact",
-    component: NotFound
+    component: NotFound,
   },
 ];
 
@@ -129,7 +130,7 @@ export const genPath = (route: CustomRoute): CustomRoute => {
       const childPath = route.path + child.path;
       const childKey = child.key
         ? `${parKey}-${child.key}`
-        : `${parKey}-${child.name.toLocaleLowerCase()}`;
+        : `${parKey}-${genKeyFollowName(child.name.toLocaleLowerCase())}`;
 
       const returnChild = Object.assign({}, child) as CustomRoute;
       returnChild.path = childPath;
@@ -151,6 +152,6 @@ export const genPath = (route: CustomRoute): CustomRoute => {
   };
 };
 
-export const Router = routes.map((child) => {
+export const router = routes.map((child) => {
   return genPath(child);
-});
+}) as MyRoute[];
