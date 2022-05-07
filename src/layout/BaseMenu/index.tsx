@@ -1,20 +1,43 @@
-import { DesktopOutlined, HomeOutlined } from "@ant-design/icons";
+import { MyRoute } from "@/types/route";
 import { Menu } from "antd";
+import { MenuItemType, SubMenuType } from "rc-menu/lib/interface";
 import React from "react";
-import { Link } from "react-router-dom";
 
-type Props = {};
+type Props = {
+  routes: Array<MyRoute>;
+};
 
-const BaseMenu = (props: Props) => {
+// Gen Menu Item using recursive
+const genMenuItem = (
+  routes: Array<MyRoute>
+): MenuItemType[] | SubMenuType[] => {
+  return routes.map((route) => {
+    if (route.children) {
+      const returnSubMenu: SubMenuType = {
+        key: `sub-${route.key}`,
+        label: <div>{route.name}</div>,
+        children: genMenuItem(route.children as MyRoute[]),
+      };
+      return returnSubMenu;
+    }
+
+    const returnMenuItem: MenuItemType = {
+      label: <div>{route.name}</div>,
+      key: route.key,
+    };
+    return returnMenuItem;
+  });
+};
+
+const BaseMenu = ({ routes }: Props) => {
   return (
-    <Menu defaultSelectedKeys={["1"]} theme="dark">
-      <Menu.Item key={"1"} icon={<HomeOutlined />}>
-        <Link to="/">Home</Link>
-      </Menu.Item>
-      <Menu.Item key={"2"} icon={<DesktopOutlined />}>
-        <Link to="/products">Products</Link>
-      </Menu.Item>
-    </Menu>
+    <Menu
+      defaultOpenKeys={["sub-services"]}
+      theme="dark"
+      mode="inline"
+      items={genMenuItem(routes)}
+      defaultActiveFirst
+    />
   );
 };
 

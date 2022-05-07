@@ -1,7 +1,10 @@
+import { Router } from "@/routes/routes";
+import { MyRoute } from "@/types/route";
 import { Layout as AntLayout, PageHeader } from "antd";
 import { Footer } from "antd/lib/layout/layout";
 import React, { useCallback, useState } from "react";
 import { Outlet } from "react-router-dom";
+import BaseMenu from "./BaseMenu";
 import LayoutFooter from "./LayoutFooter";
 import NavMenu from "./NavMenu";
 import SocialContact from "./SocialContact";
@@ -36,7 +39,9 @@ const Layout = () => {
           style={{
             minHeight: "100vh",
           }}
-        ></Sider>
+        >
+          <BaseMenu routes={Router as MyRoute[]} />
+        </Sider>
       </AntLayout>
       <Footer hasSider>
         <LayoutFooter />
