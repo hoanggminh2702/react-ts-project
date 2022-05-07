@@ -5,12 +5,11 @@ import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import NotFound from "./components/NotFound";
 import HomePage from "./pages/home";
-import { Router } from "./routes/routes";
+import { router } from "./routes/routes";
 
 type Props = {};
 
 const App = (props: Props) => {
-  console.log(Router);
   Aos.init();
   return (
     <BrowserRouter>
@@ -18,7 +17,7 @@ const App = (props: Props) => {
         <Route path="/" element={<Layout />}>
           <Route index element={<HomePage />} />
           <Route path="*" element={<NotFound />} />
-          {Router.map((route) => {
+          {router.map((route) => {
             const Component = route.component;
             return (
               <Route

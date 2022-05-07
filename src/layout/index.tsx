@@ -1,4 +1,4 @@
-import { Router } from "@/routes/routes";
+import { router } from "@/routes/routes";
 import { MyRoute } from "@/types/route";
 import { Layout as AntLayout, PageHeader } from "antd";
 import { Footer } from "antd/lib/layout/layout";
@@ -40,7 +40,7 @@ const Layout = () => {
             minHeight: "100vh",
           }}
         >
-          <BaseMenu routes={Router as MyRoute[]} />
+          <BaseMenu routes={router as MyRoute[]} />
         </Sider>
       </AntLayout>
       <Footer hasSider>

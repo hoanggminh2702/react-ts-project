@@ -2,6 +2,7 @@ import { MyRoute } from "@/types/route";
 import { Menu } from "antd";
 import { MenuItemType, SubMenuType } from "rc-menu/lib/interface";
 import React from "react";
+import { Link } from "react-router-dom";
 
 type Props = {
   routes: Array<MyRoute>;
@@ -15,14 +16,14 @@ const genMenuItem = (
     if (route.children) {
       const returnSubMenu: SubMenuType = {
         key: `sub-${route.key}`,
-        label: <div>{route.name}</div>,
+        label: <Link to={route.path}>{route.name}</Link>,
         children: genMenuItem(route.children as MyRoute[]),
       };
       return returnSubMenu;
     }
 
     const returnMenuItem: MenuItemType = {
-      label: <div>{route.name}</div>,
+      label: <Link to={route.path}>{route.name}</Link>,
       key: route.key,
     };
     return returnMenuItem;
