@@ -1,8 +1,7 @@
-import { router } from "@/routes/routes";
 import { MyRoute } from "@/types/route";
 import { Layout as AntLayout, PageHeader } from "antd";
 import { Footer } from "antd/lib/layout/layout";
-import React, { useCallback, useState } from "react";
+import React, { FunctionComponent, useCallback, useState } from "react";
 import { Outlet } from "react-router-dom";
 import BaseMenu from "./BaseMenu";
 import LayoutFooter from "./LayoutFooter";
@@ -11,7 +10,13 @@ import SocialContact from "./SocialContact";
 
 const { Sider, Content } = AntLayout;
 
-const Layout = () => {
+export type RootLayoutProps = {
+  routes: MyRoute[];
+};
+
+type LayoutProps = RootLayoutProps;
+
+const Layout: FunctionComponent<LayoutProps> = ({ routes }: LayoutProps) => {
   const [showMenu, setShowMenu] = useState(true);
   const toggleMenu = useCallback(() => {
     setShowMenu(!showMenu);
@@ -40,7 +45,7 @@ const Layout = () => {
             minHeight: "100vh",
           }}
         >
-          <BaseMenu routes={router as MyRoute[]} />
+          <BaseMenu routes={routes as MyRoute[]} />
         </Sider>
       </AntLayout>
       <Footer hasSider>
