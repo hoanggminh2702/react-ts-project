@@ -20,21 +20,16 @@ const CardFixBarInk = ({
   useEffect(() => {
     const cardElement = document.querySelector(`#${id}`) as HTMLDivElement;
     if (cardElement) {
-      const totalElement = cardElement.querySelectorAll(
-        ".ant-tabs-tab"
-      ) as NodeListOf<HTMLDivElement>;
-
+      const activeElement = cardElement.querySelector(
+        ".ant-tabs-tab-active"
+      ) as HTMLDivElement;
       let activeWidth = 0;
       let leftWidth = 0;
 
-      Array.from(totalElement).some((element) => {
-        if (element.classList.contains("ant-tabs-tab-active")) {
-          activeWidth = element.offsetWidth;
-          leftWidth = element.offsetLeft;
-        }
-
-        return element.classList.contains("ant-tabs-tab-active");
-      });
+      if (activeElement) {
+        activeWidth = activeElement.offsetWidth;
+        leftWidth = activeElement.offsetLeft;
+      }
 
       setLeft(leftWidth);
       setWidth(activeWidth);

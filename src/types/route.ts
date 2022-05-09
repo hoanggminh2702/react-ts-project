@@ -6,6 +6,7 @@ export type CustomRoute = {
   path: string;
   name: string;
   icon?: ReactNode | string;
+  layoutElement?: FunctionComponent;
   component: FunctionComponent;
   children?: Array<CustomRoute>;
 };

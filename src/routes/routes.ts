@@ -152,6 +152,6 @@ export const genPath = (route: CustomRoute): CustomRoute => {
   };
 };
 
-export const router = routes.map((child) => {
+export const menuItem = routes.map((child) => {
   return genPath(child);
 }) as MyRoute[];
