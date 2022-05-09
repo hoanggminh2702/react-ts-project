@@ -1,11 +1,14 @@
+import NotFound from "@/components/NotFound";
 import { MyRoute } from "@/types/route";
-import React, { ReactNode, ReactNodeArray } from "react";
+import React, { FunctionComponent, ReactNode, ReactNodeArray } from "react";
 import {
   LayoutRouteProps,
   Outlet,
   PathRouteProps,
   Route,
+  Routes,
 } from "react-router-dom";
+import { menuItem } from "./routes";
 
 export const generateRoutes = (routes: MyRoute[]): ReactNodeArray => {
   return routes.map((route) => {
@@ -32,22 +35,45 @@ export const generateRoute = ({
   if (route.children && !route.layoutElement) {
     return [
       <Route path={route.path} element={<Outlet />} {...props}>
-        <Route index element={<Component />} />
+        {Component && <Route index element={<Component />} />}
         {(props as LayoutRouteProps).children && props.children}
       </Route>,
     ];
   } else if (route.children && route.layoutElement) {
-    const Layout = route.layoutElement;
+    const LayoutComponent = route.layoutElement;
+    let Layout = null;
+
+    if (route.isRoot) {
+      // Pass routes to children to gen menu item with root element
+      const passRoutes: MyRoute[] = [...(route.children as MyRoute[])];
+      passRoutes.unshift({
+        ...route,
+        children: undefined,
+        isRoot: undefined,
+        layoutElement: undefined,
+      });
+      Layout = () => <LayoutComponent routes={passRoutes as MyRoute[]} />;
+    } else {
+      Layout = route.layoutElement as FunctionComponent;
+    }
     return [
       <Route path={route.path} element={<Layout />} {...props}>
-        <Route index element={<Component />} />
+        {Component && <Route index element={<Component />} />}
         {(props as LayoutRouteProps).children && props.children}
       </Route>,
     ];
   }
   return [
-    <Route path={route.path} element={<Component />}>
+    <Route path={route.path} element={Component ? <Component /> : <NotFound />}>
       {(props as LayoutRouteProps).children && props.children}
     </Route>,
   ];
+};
+
+export const RootRouter = () => {
+  return (
+    <Routes>
+      <Route path="*" element={<NotFound />} /> {generateRoutes(menuItem)}
+    </Routes>
+  );
 };
