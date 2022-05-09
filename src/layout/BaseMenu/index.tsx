@@ -23,7 +23,7 @@ const genMenuItem = (
         });
       const returnSubMenu: SubMenuType = {
         key: `sub-${route.path}`,
-        label: <Link to={route.path}>{route.name}</Link>,
+        label: route.component ? <Link to={route.path}>{}</Link> : route.name,
         children: genMenuItem(returnedChildren as MyRoute[]),
       };
       return returnSubMenu;
