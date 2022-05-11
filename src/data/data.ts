@@ -4,7 +4,7 @@ export type MovieType = {
   id: number | string;
   name?: string;
   date?: string;
-  img: string | Array<string>;
+  img: string;
 };
 
 export const moviesData: Array<MovieType> = [

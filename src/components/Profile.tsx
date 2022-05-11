@@ -21,7 +21,7 @@ const Profile = (props: ProfileProps) => {
         <div className="profile-image">
           <div className="color-bg artist-crbg" />
           <div className="artist-img">
-            {props.images.length === 1 && (
+            {props.images.length === 1 && props.images[0].img && (
               <img alt={props.nickName} src={props.images[0].img as string} />
             )}
             {props.images.length > 1 && (
