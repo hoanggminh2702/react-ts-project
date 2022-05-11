@@ -1,0 +1,10 @@
+.price-report-card-table {
+  thead.ant-table-thead {
+    tr .ant-table-cell {
+      background-color: #eee;
+    }
+  }
+  tr:nth-child(2n) td {
+    background-color: #eee;
+  }
+}

@@ -90,6 +90,9 @@
 
   // Sider
   .ant-layout-sider {
+    max-width: 270px !important;
+    min-width: 270px !important;
+    width: 270px !important;
     padding-top: $header-height;
 
     .ant-menu {

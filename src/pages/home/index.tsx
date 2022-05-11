@@ -1,7 +1,7 @@
 import React from "react";
 import MovieSlider from "../../components/MovieSlider";
 import { moviesData } from "../../data/data";
-import AboutDreamworkSlide from "./AboutDreamworkSlide";
+import AboutDreamworkSlider from "./AboutDreamworkSlider";
 import StayInTouch from "./StayInTouch";
 
 type Props = {};
@@ -21,7 +21,7 @@ const HomePage = (props: Props) => {
       </div>
       <div className="about-dream-work">
         <h1 className="about-dream-work-title">About Dreamwork</h1>
-        <AboutDreamworkSlide />
+        <AboutDreamworkSlider />
       </div>
 
       <StayInTouch />

@@ -1,15 +1,22 @@
-import { DesktopOutlined, HomeOutlined } from "@ant-design/icons";
-import { Layout as AntLayout, Menu, PageHeader } from "antd";
+import { MyRoute } from "@/types/route";
+import { Layout as AntLayout, PageHeader } from "antd";
 import { Footer } from "antd/lib/layout/layout";
-import React, { useCallback, useState } from "react";
-import { Link, Outlet } from "react-router-dom";
+import React, { FunctionComponent, useCallback, useState } from "react";
+import { Outlet } from "react-router-dom";
+import BaseMenu from "./BaseMenu";
 import LayoutFooter from "./LayoutFooter";
 import NavMenu from "./NavMenu";
 import SocialContact from "./SocialContact";
 
 const { Sider, Content } = AntLayout;
 
-const Layout = () => {
+export type RootLayoutProps = {
+  routes: MyRoute[];
+};
+
+type LayoutProps = RootLayoutProps;
+
+const Layout: FunctionComponent<LayoutProps> = ({ routes }: LayoutProps) => {
   const [showMenu, setShowMenu] = useState(true);
   const toggleMenu = useCallback(() => {
     setShowMenu(!showMenu);
@@ -38,14 +45,7 @@ const Layout = () => {
             minHeight: "100vh",
           }}
         >
-          <Menu defaultSelectedKeys={["1"]} theme="dark">
-            <Menu.Item key={"1"} icon={<HomeOutlined />}>
-              <Link to="/">Home</Link>
-            </Menu.Item>
-            <Menu.Item key={"2"} icon={<DesktopOutlined />}>
-              <Link to="/products">Products</Link>
-            </Menu.Item>
-          </Menu>
+          <BaseMenu routes={routes as MyRoute[]} />
         </Sider>
       </AntLayout>
       <Footer hasSider>
