@@ -1,6 +1,7 @@
 import NotFound from "@/components/NotFound";
-import Profile from "@/components/Profile";
+import Profile, { ProfileProps } from "@/components/Profile";
 import { moviesData } from "@/data/data";
+import { ParsePropsFunc } from "@/hooks/HOC";
 import Layout from "@/layout";
 import HomePage from "@/pages/home";
 import Products from "@/pages/Products";
@@ -69,16 +70,15 @@ export const routes: Array<CustomRoute> = [
         key: "profile",
         path: "/profile",
         hideInMenu: true,
-        component: () => {
-          return (
-            <Profile
-              nickName="Binh An"
-              name="Binh An"
-              images={moviesData}
-              dateOfBirth="1999.01.01"
-            />
-          );
-        },
+        component: ParsePropsFunc<ProfileProps>(
+          {
+            nickName: "Binh An",
+            name: "Binh An",
+            images: moviesData,
+            dateOfBirth: "1999.01.01",
+          },
+          Profile
+        ),
       },
       {
         name: "Dịch vụ Media Marketing",

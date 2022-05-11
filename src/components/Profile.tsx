@@ -2,14 +2,14 @@ import { MovieType } from "@/data/data";
 import React, { memo } from "react";
 import MovieSlider from "./MovieSlider";
 
-type Props = {
+export type ProfileProps = {
   nickName: string;
   name: string;
   images: Array<MovieType>;
   dateOfBirth: string;
 };
 
-const Profile = (props: Props) => {
+const Profile = (props: ProfileProps) => {
   return (
     <div className="profile">
       <div className="profile-name">
