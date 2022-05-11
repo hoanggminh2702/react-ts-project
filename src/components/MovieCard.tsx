@@ -3,6 +3,7 @@ import { MovieType } from "../data/data";
 
 type Props = {
   index: number;
+  isAutoRatio?: boolean;
 } & {
   [index in keyof Omit<MovieType, "id">]?: string;
 };
@@ -14,7 +15,7 @@ const MovieCard = (props: Props) => {
       data-aos-duration="500"
       data-aos-easing="ease-in-out"
       data-aos-delay={`${props.index * 100}`}
-      className="movie-card-container"
+      className="slide-children movie-card-container"
     >
       <div className="movie-card">
         {props.img && <img src={props.img} className="movie-card-img" />}

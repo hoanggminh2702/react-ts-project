@@ -45,3 +45,23 @@
     }
   }
 }
+
+.auto-ratio-height {
+  height: 100%;
+  .container-slider {
+    height: 100%;
+  }
+
+  .change-slide-wrapper {
+    height: 100%;
+  }
+
+  .movie-slider {
+    height: 100%;
+  }
+
+  .slide-children {
+    height: 100%;
+    padding-bottom: unset;
+  }
+}

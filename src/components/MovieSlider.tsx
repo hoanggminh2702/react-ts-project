@@ -67,9 +67,15 @@ type Props = {
   items: Array<MovieType>;
   slidesPerView?: number;
   arrowWidth?: number;
+  isAutoRatio?: boolean;
 };
 
-const MovieSlider = ({ items, slidesPerView = 3, arrowWidth }: Props) => {
+const MovieSlider = ({
+  isAutoRatio,
+  items,
+  slidesPerView = 3,
+  arrowWidth,
+}: Props) => {
   const sliderRef = useRef<SliderRefType | null>(null);
 
   const handleNextSlide = useCallback(() => {
@@ -79,7 +85,31 @@ const MovieSlider = ({ items, slidesPerView = 3, arrowWidth }: Props) => {
   const handlePrevSlide = useCallback(() => {
     sliderRef.current?.prev();
   }, [sliderRef.current]);
-  return (
+  return isAutoRatio ? (
+    <div className="auto-ratio-height">
+      <ChangeSlideArrow
+        width={arrowWidth}
+        next={handleNextSlide}
+        prev={handlePrevSlide}
+      >
+        <Slider
+          ref={sliderRef}
+          loop
+          className="movie-slider"
+          slidesPerView={slidesPerView}
+          spaceBetween={16}
+        >
+          {items.map((movie, index) => {
+            return (
+              <SwiperSlide key={movie.id} className="movie-slide">
+                <MovieCard index={index} img={movie.img} />
+              </SwiperSlide>
+            );
+          })}
+        </Slider>
+      </ChangeSlideArrow>
+    </div>
+  ) : (
     <ChangeSlideArrow
       width={arrowWidth}
       next={handleNextSlide}
