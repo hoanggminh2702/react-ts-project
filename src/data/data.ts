@@ -1,10 +1,10 @@
 import Images from "../assets/images/Images";
 
 export type MovieType = {
-  id: number;
-  name: string;
-  date: string;
-  img: string;
+  id: number | string;
+  name?: string;
+  date?: string;
+  img: string | Array<string>;
 };
 
 export const moviesData: Array<MovieType> = [

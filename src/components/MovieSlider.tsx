@@ -13,6 +13,8 @@ type ChangeSlideArrowType = {
   children?: ReactNode;
 };
 
+
+
 const ChangeSlideArrow: React.FC<ChangeSlideArrowType> = memo(
   ({ next, prev, width = 60, children }) => {
     // useCallback to avoid uneccessary re-render

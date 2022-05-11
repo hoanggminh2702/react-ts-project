@@ -55,6 +55,17 @@ const Images = {
       },
     };
   },
+
+  get artists() {
+    return {
+      get binhAn() {
+        return new URL(
+          "./artists/ba1.jpg",
+          import.meta.url
+        ).href;
+      }
+    }
+  },
 };
 
 export default Images;

@@ -1,4 +1,7 @@
 import NotFound from "@/components/NotFound";
+import Profile, { ProfileProps } from "@/components/Profile";
+import { moviesData } from "@/data/data";
+import { ParsePropsFunc } from "@/hooks/HOC";
 import Layout from "@/layout";
 import HomePage from "@/pages/home";
 import Products from "@/pages/Products";
@@ -63,17 +66,25 @@ export const routes: Array<CustomRoute> = [
         ],
       },
       {
+        name: "Thông tin cá nhân",
+        key: "profile",
+        path: "/profile",
+        hideInMenu: true,
+        component: ParsePropsFunc<ProfileProps>(
+          {
+            nickName: "Binh An",
+            name: "Binh An",
+            images: moviesData,
+            dateOfBirth: "1999.01.01",
+          },
+          Profile
+        ),
+      },
+      {
         name: "Dịch vụ Media Marketing",
         key: "media-marketing-services",
         path: "/media-marketing-services",
-        // hideChildren: true,
-        children: [
-          {
-            name: "Dịch vụ Media Marketing2",
-            key: "media-marketing-services2",
-            path: "/media-marketing-services2",
-          },
-        ],
+        component: NotFound,
       },
       {
         name: "Cho thuê Studio",
