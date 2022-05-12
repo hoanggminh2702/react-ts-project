@@ -25,7 +25,7 @@ const Profile = (props: ProfileProps) => {
               <img alt={props.nickName} src={props.images[0].img as string} />
             )}
             {props.images.length > 1 && (
-              <MovieSlider items={props.images} slidesPerView={1} />
+              <MovieSlider items={props.images} slidesPerView={1} isAutoRatio />
             )}
           </div>
         </div>

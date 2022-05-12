@@ -15,7 +15,7 @@
     width: 20%;
     margin-right: 40px;
     font-size: 12px;
-    font-family: 'Montserrat';
+    font-family: "Montserrat";
     font-weight: 400;
     letter-spacing: 0.2em;
     text-align: right;
@@ -28,8 +28,15 @@
 
     .profile-image {
       position: relative;
-      width: 530px;
-      height: 675px;
+
+      .artist-img {
+        width: 530px;
+        height: 675px;
+
+        img {
+          object-fit: fill;
+        }
+      }
     }
 
     .profile-txt {
@@ -37,8 +44,12 @@
       width: 275px;
       bottom: 50px;
       right: 0;
+
+      .name-title {
+        font-family: "Montserrat";
+        font-size: 25pt;
+        font-weight: 600;
+      }
     }
-
   }
-
 }
