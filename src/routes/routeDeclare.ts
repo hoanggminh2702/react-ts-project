@@ -36,7 +36,8 @@ export const routes: Array<CustomRoute> = [
             name: "Chụp hình kinh doanh đội nhóm",
             key: "team-business",
             path: "/team-business",
-            component: NotFound,
+            permission: true,
+            component: Products,
           },
           {
             name: "Chụp hình nude & sexy",

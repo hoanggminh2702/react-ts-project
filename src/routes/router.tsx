@@ -70,7 +70,7 @@ export const generateRoute = ({
       element={
         Component ? (
           route.permission ? (
-            <RequiredAuth isLogin={true}>
+            <RequiredAuth isLogin={false}>
               <Component />
             </RequiredAuth>
           ) : (
