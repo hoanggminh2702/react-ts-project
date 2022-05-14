@@ -10,6 +10,7 @@ export type CustomRoute = {
   icon?: ReactNode | string;
   layoutLabel?: string;
   hideInMenu?: boolean;
+  permission?: boolean;
   layoutElement?: FunctionComponent<any> | FunctionComponent<RootLayoutProps>;
   component?: FunctionComponent<any>;
   children?: Array<CustomRoute>;

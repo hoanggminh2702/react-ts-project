@@ -1,3 +1,4 @@
+import RequiredAuth from "@/auth/RequiredAuth";
 import NotFound from "@/components/NotFound";
 import { MyRoute } from "@/types/route";
 import React, { FunctionComponent, ReactNode, ReactNodeArray } from "react";
@@ -64,7 +65,22 @@ export const generateRoute = ({
     ];
   }
   return [
-    <Route path={route.path} element={Component ? <Component /> : <NotFound />}>
+    <Route
+      path={route.path}
+      element={
+        Component ? (
+          route.permission ? (
+            <RequiredAuth isLogin={true}>
+              <Component />
+            </RequiredAuth>
+          ) : (
+            <Component />
+          )
+        ) : (
+          <NotFound />
+        )
+      }
+    >
       {(props as LayoutRouteProps).children && props.children}
     </Route>,
   ];
