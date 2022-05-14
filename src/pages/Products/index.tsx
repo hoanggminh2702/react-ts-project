@@ -1,4 +1,5 @@
 import PriceReportCardTable from "@/components/PriceReportCardTable";
+import { columns, dataSource } from "@/data/data";
 import React from "react";
 
 type Props = {};
@@ -11,7 +12,7 @@ const Products = (props: Props) => {
         width: 1200,
       }}
     >
-      <PriceReportCardTable />
+      <PriceReportCardTable dataSource={dataSource} columns={columns} />
     </div>
   );
 };
