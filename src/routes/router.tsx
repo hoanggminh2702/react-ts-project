@@ -23,21 +23,27 @@ export const generateRoutes = (routes: MyRoute[]): ReactNodeArray => {
   });
 };
 
-type GenerateRouteProp = (PathRouteProps | LayoutRouteProps) & {
+type GenerateRouteProp = (
+  | Omit<PathRouteProps, "element" | "path" | "children">
+  | Omit<LayoutRouteProps, "element" | "path" | "children">
+) & {
   route: MyRoute;
   children?: ReactNode;
 };
 
 export const generateRoute = ({
   route,
+  children,
   ...props
 }: GenerateRouteProp): ReactNodeArray => {
   const Component = route.component;
+
+  console.log(location);
   if (route.children && !route.layoutElement) {
     return [
       <Route path={route.path} element={<Outlet />} {...props}>
         {Component && <Route index element={<Component />} />}
-        {(props as LayoutRouteProps).children && props.children}
+        {children && children}
       </Route>,
     ];
   } else if (route.children && route.layoutElement) {
@@ -60,7 +66,7 @@ export const generateRoute = ({
     return [
       <Route path={route.path} element={<Layout />} {...props}>
         {Component && <Route index element={<Component />} />}
-        {(props as LayoutRouteProps).children && props.children}
+        {children && children}
       </Route>,
     ];
   }
@@ -80,9 +86,7 @@ export const generateRoute = ({
           <NotFound />
         )
       }
-    >
-      {(props as LayoutRouteProps).children && props.children}
-    </Route>,
+    />,
   ];
 };
 

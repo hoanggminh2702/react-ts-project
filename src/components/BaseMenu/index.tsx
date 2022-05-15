@@ -74,7 +74,7 @@ const BaseMenu = ({ routes }: Props) => {
     return pathname === "/" ? "" : pathname;
   }, [pathname]);
 
-  console.log(curLocation);
+  // console.log(curLocation);
   return (
     <Menu
       defaultOpenKeys={defaultOpenKeys}

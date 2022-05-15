@@ -3,7 +3,7 @@ import { Layout as AntLayout, PageHeader } from "antd";
 import { Footer } from "antd/lib/layout/layout";
 import React, { FunctionComponent, useCallback, useState } from "react";
 import { Outlet } from "react-router-dom";
-import BaseMenu from "./BaseMenu";
+import BaseMenu from "../components/BaseMenu";
 import LayoutFooter from "./LayoutFooter";
 import NavMenu from "./NavMenu";
 import SocialContact from "./SocialContact";

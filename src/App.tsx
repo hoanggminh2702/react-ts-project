@@ -8,6 +8,7 @@ type Props = {};
 
 const App = (props: Props) => {
   Aos.init();
+
   return (
     <BrowserRouter>
       <RootRouter />
