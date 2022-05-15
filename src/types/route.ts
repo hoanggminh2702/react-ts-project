@@ -15,6 +15,7 @@ export type CustomRoute = {
   component?: FunctionComponent<any>; // If route is layout route, this will be component the index route, else this route will be the component of the route
   children?: Array<CustomRoute>;
   hideChildren?: boolean;
+  defaultCloseChildren?: boolean;
 };
 
 export type MyRoute = RemoveOptionalProperty<CustomRoute, "key">;
