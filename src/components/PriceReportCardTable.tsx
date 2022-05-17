@@ -55,7 +55,7 @@ const PriceReportCardTable = ({
       tabBarExtraContent={<a href="#">More</a>}
       tabList={tabList}
     >
-      <Table dataSource={dataSource} columns={columns} />
+      <Table dataSource={dataSource} columns={columns} pagination={false} />
     </CardFixBarInk>
   );
 };

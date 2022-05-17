@@ -1,0 +1,20 @@
+.price-report-container {
+  display: flex;
+
+  .table-container {
+    width: 80%;
+    .anchor-title {
+      margin: 20px 10px;
+    }
+  }
+
+  .list-anchor {
+    padding-top: 30px;
+    padding-left: 10px;
+    width: 20%;
+  }
+
+  .ant-card {
+    margin-bottom: 100px;
+  }
+}

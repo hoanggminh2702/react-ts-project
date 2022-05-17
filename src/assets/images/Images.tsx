@@ -56,15 +56,30 @@ const Images = {
     };
   },
 
-  get artists() {
+  get artistsBinhAn() {
     return {
-      get binhAn() {
-        return new URL(
-          "./artists/ba1.jpg",
-          import.meta.url
-        ).href;
-      }
-    }
+      get binhAn1() {
+        return new URL("./artists/binh-an/ba1.jpg", import.meta.url).href;
+      },
+      get binhAn2() {
+        return new URL("./artists/binh-an/ba2.jpg", import.meta.url).href;
+      },
+      get binhAn3() {
+        return new URL("./artists/binh-an/ba3.jpg", import.meta.url).href;
+      },
+      get binhAn4() {
+        return new URL("./artists/binh-an/ba4.jpg", import.meta.url).href;
+      },
+      get binhAn5() {
+        return new URL("./artists/binh-an/ba5.jpg", import.meta.url).href;
+      },
+      get binhAn6() {
+        return new URL("./artists/binh-an/ba6.jpg", import.meta.url).href;
+      },
+      get binhAn7() {
+        return new URL("./artists/binh-an/ba7.jpg", import.meta.url).href;
+      },
+    };
   },
 };
 
