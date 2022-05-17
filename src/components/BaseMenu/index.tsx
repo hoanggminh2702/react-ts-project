@@ -1,5 +1,5 @@
 import { MyRoute } from "@/types/route";
-import { FolderOutlined } from "@ant-design/icons";
+import { AppstoreOutlined } from "@ant-design/icons";
 import { Menu, MenuProps } from "antd";
 import { ItemType } from "antd/lib/menu/hooks/useItems";
 import React, { memo, useMemo } from "react";
@@ -8,6 +8,7 @@ import { Link, useLocation } from "react-router-dom";
 // Gen Menu Item using recursive
 const genMenuItem = (routes: Array<MyRoute> | null[]): ItemType[] => {
   return routes.map((route) => {
+    const Icon = route?.icon;
     if (route) {
       if (route.hideInMenu) return null;
       else {
@@ -32,7 +33,7 @@ const genMenuItem = (routes: Array<MyRoute> | null[]): ItemType[] => {
           return returnSubMenu;
         } else {
           const returnMenuItem: ItemType = {
-            icon: <FolderOutlined />,
+            icon: Icon ? <Icon /> : <AppstoreOutlined />,
             label: (
               <Link to={route.path}>{route.layoutLabel || route.name}</Link>
             ),
