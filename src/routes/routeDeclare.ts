@@ -6,6 +6,12 @@ import Layout from "@/layout";
 import HomePage from "@/pages/home";
 import Products from "@/pages/Products";
 import { CustomRoute } from "@/types/route";
+import {
+  BankOutlined,
+  CoffeeOutlined,
+  HomeOutlined,
+  UserOutlined,
+} from "@ant-design/icons";
 
 export const routes: Array<CustomRoute> = [
   {
@@ -13,6 +19,7 @@ export const routes: Array<CustomRoute> = [
     path: "",
     isRoot: true,
     layoutElement: Layout,
+    icon: HomeOutlined,
     component: HomePage,
     children: [
       {
@@ -24,12 +31,14 @@ export const routes: Array<CustomRoute> = [
             name: "Chụp hình Doanh nhân",
             key: "business-man",
             path: "/business-man",
+            icon: BankOutlined,
             component: Products,
           },
           {
             name: "Chụp hình đồ ăn",
             key: "foody",
             path: "/food",
+            icon: CoffeeOutlined,
             component: NotFound,
           },
           {
@@ -69,6 +78,7 @@ export const routes: Array<CustomRoute> = [
         name: "Thông tin cá nhân",
         key: "profile",
         path: "/profile",
+        icon: UserOutlined,
         component: ParsePropsFunc<ProfileProps>(
           {
             nickName: "Binh An",
