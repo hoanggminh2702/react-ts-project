@@ -1,13 +1,9 @@
 import { MyRoute } from "@/types/route";
-import { Menu } from "antd";
+import { FolderOutlined } from "@ant-design/icons";
+import { Menu, MenuProps } from "antd";
 import { ItemType } from "antd/lib/menu/hooks/useItems";
-import { MenuItemType, SubMenuType } from "rc-menu/lib/interface";
 import React, { memo, useMemo } from "react";
 import { Link, useLocation } from "react-router-dom";
-
-type Props = {
-  routes: Array<MyRoute>;
-};
 
 // Gen Menu Item using recursive
 const genMenuItem = (routes: Array<MyRoute> | null[]): ItemType[] => {
@@ -23,7 +19,8 @@ const genMenuItem = (routes: Array<MyRoute> | null[]): ItemType[] => {
               children: undefined,
               layoutElement: undefined,
             });
-          const returnSubMenu: SubMenuType = {
+          const returnSubMenu: ItemType = {
+            // icon: <FolderOutlined />,
             key: `sub-${route.path}`,
             label: route.component ? (
               <Link to={route.path}>{}</Link>
@@ -34,7 +31,8 @@ const genMenuItem = (routes: Array<MyRoute> | null[]): ItemType[] => {
           };
           return returnSubMenu;
         } else {
-          const returnMenuItem: MenuItemType = {
+          const returnMenuItem: ItemType = {
+            icon: <FolderOutlined />,
             label: (
               <Link to={route.path}>{route.layoutLabel || route.name}</Link>
             ),
@@ -59,7 +57,11 @@ const genOpenSubMenuKeysArr = (routes: MyRoute[]): string[] => {
   }, [] as string[]);
 };
 
-const BaseMenu = ({ routes }: Props) => {
+type Props = {
+  routes: Array<MyRoute>;
+} & Omit<MenuProps, "defaultOpenKeys" | "selectedKeys">;
+
+const BaseMenu = ({ routes, ...props }: Props) => {
   const items = useMemo(() => {
     return genMenuItem(routes);
   }, [routes]);
@@ -82,7 +84,7 @@ const BaseMenu = ({ routes }: Props) => {
       theme="dark"
       mode="inline"
       items={items}
-      defaultActiveFirst
+      {...props}
     />
   );
 };

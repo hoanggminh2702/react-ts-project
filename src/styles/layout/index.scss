@@ -90,15 +90,47 @@
 
   // Sider
   .ant-layout-sider {
-    max-width: 270px !important;
-    min-width: 270px !important;
-    width: 270px !important;
     padding-top: $header-height;
 
-    .ant-menu {
+    .menu-wrapper {
       position: sticky;
       top: $header-height;
       left: 0;
+      z-index: 1;
+
+      .trigger-sider-btn {
+        width: 35px;
+        height: 35px;
+        background-color: $unselected;
+        box-shadow: 0 2px 10px rgb(0, 0, 0, 10%);
+        border-radius: 4px;
+        transition: all linear 0.2s;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        position: absolute;
+        top: 50%;
+        left: 0;
+
+        transform: translate(-50%, -50%);
+        z-index: 1;
+
+        &:hover {
+          opacity: 0.95;
+        }
+      }
+
+      .anticon {
+        font-size: 14px;
+        color: white;
+      }
+
+      > .ant-menu {
+        height: calc(100vh - $header-height);
+        overflow-y: auto;
+      }
     }
   }
 
