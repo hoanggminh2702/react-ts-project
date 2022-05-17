@@ -1,4 +1,5 @@
 import { MyRoute } from "@/types/route";
+import { DoubleRightOutlined } from "@ant-design/icons";
 import { Layout as AntLayout, PageHeader } from "antd";
 import { Footer } from "antd/lib/layout/layout";
 import React, { FunctionComponent, useCallback, useState } from "react";
@@ -31,24 +32,30 @@ const Layout: FunctionComponent<LayoutProps> = ({ routes }: LayoutProps) => {
           <NavMenu key={"nav-menu"} />,
         ]}
       ></PageHeader>
-      <AntLayout hasSider>
+      <AntLayout>
         <Content>
           <Outlet />
         </Content>
         <Sider
           collapsible
           collapsed={!showMenu}
-          onCollapse={toggleMenu}
           trigger={null}
           theme="dark"
-          style={{
-            minHeight: "100vh",
-          }}
+          width={270}
         >
-          <BaseMenu routes={routes as MyRoute[]} />
+          <div className="menu-wrapper">
+            <div onClick={toggleMenu} className="trigger-sider-btn">
+              <DoubleRightOutlined
+                style={{
+                  transform: showMenu ? undefined : "rotate(180deg)",
+                }}
+              />
+            </div>
+            <BaseMenu routes={routes as MyRoute[]} />
+          </div>
         </Sider>
       </AntLayout>
-      <Footer hasSider>
+      <Footer>
         <LayoutFooter />
       </Footer>
     </AntLayout>
