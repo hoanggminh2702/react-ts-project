@@ -1,24 +1,22 @@
 .profile {
-  position: relative;
+  display: flex;
   width: 1100px;
   height: auto;
   overflow: hidden;
-  margin: 0 auto;
+  margin: 100px auto;
   z-index: 111;
   padding: 0 50px;
 
-  > div {
-    float: left;
-  }
   .profile-name {
     position: relative;
     width: 20%;
-    margin-right: 40px;
-    font-size: 12px;
-    font-family: 'Montserrat';
-    font-weight: 400;
+    font-size: 16px;
+    font-family: "Montserrat";
+    font-weight: 900;
     letter-spacing: 0.2em;
     text-align: right;
+    margin-top: 10px;
+    padding-right: 50px;
   }
 
   .profile-inner {
@@ -28,8 +26,27 @@
 
     .profile-image {
       position: relative;
-      width: 530px;
-      height: 675px;
+
+      .color-bg {
+        background-color: #a4bde4;
+        position: absolute;
+        width: 460px;
+        height: 570px;
+
+        opacity: 0.3;
+      }
+
+      .artist-img {
+        width: 530px;
+        height: 715px;
+        padding-top: 20px;
+        padding-left: 10px;
+        // box-shadow: 15px 15px 20px 0 #bdbcbc;
+
+        img {
+          object-fit: fill;
+        }
+      }
     }
 
     .profile-txt {
@@ -37,8 +54,13 @@
       width: 275px;
       bottom: 50px;
       right: 0;
+      padding-left: 50px;
+
+      .name-title {
+        font-family: "Montserrat";
+        font-size: 25pt;
+        font-weight: 600;
+      }
     }
-
   }
-
 }

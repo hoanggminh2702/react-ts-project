@@ -4,6 +4,7 @@ import { moviesData } from "@/data/data";
 import { ParsePropsFunc } from "@/hooks/HOC";
 import Layout from "@/layout";
 import HomePage from "@/pages/home";
+import PriceReportPage from "@/pages/price-report/PriceReportPage";
 import Products from "@/pages/Products";
 import { CustomRoute } from "@/types/route";
 import {
@@ -117,7 +118,7 @@ export const routes: Array<CustomRoute> = [
         name: "Báo giá",
         key: "pricing",
         path: "/pricing",
-        component: NotFound,
+        component: PriceReportPage,
       },
       {
         name: "Các bộ sưu tập",

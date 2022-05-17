@@ -8,6 +8,37 @@ export type MovieType = {
   img: string;
 };
 
+export const BinhAn: Array<MovieType> = [
+  {
+    id: 1,
+    img: Images.artistsBinhAn.binhAn1,
+  },
+  {
+    id: 2,
+    img: Images.artistsBinhAn.binhAn2,
+  },
+  {
+    id: 3,
+    img: Images.artistsBinhAn.binhAn3,
+  },
+  {
+    id: 4,
+    img: Images.artistsBinhAn.binhAn4,
+  },
+  {
+    id: 5,
+    img: Images.artistsBinhAn.binhAn5,
+  },
+  {
+    id: 6,
+    img: Images.artistsBinhAn.binhAn6,
+  },
+  {
+    id: 7,
+    img: Images.artistsBinhAn.binhAn7,
+  },
+];
+
 export const moviesData: Array<MovieType> = [
   {
     id: 1,
