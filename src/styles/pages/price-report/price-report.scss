@@ -6,17 +6,18 @@
     .anchor-title {
       margin: 20px 10px;
     }
-    .ant-anchor-wrapper {
-      position: sticky;
-      top: calc($header-height + 5px);
-      left: 0;
-    }
   }
 
   .list-anchor {
     padding-top: 30px;
     padding-left: 10px;
     width: 20%;
+
+    .ant-anchor-wrapper {
+      position: sticky;
+      top: calc($header-height + 5px);
+      left: 0;
+    }
   }
 
   .ant-card {
