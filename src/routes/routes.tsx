@@ -1,4 +1,4 @@
-import { CustomRoute, MyRoute } from "@/types/route";
+import { CustomRoute, RouteWithKey } from "@/models/route";
 import { genKeyFollowName } from "@/utils/utils";
 import { routes } from "./routeDeclare";
 
@@ -43,4 +43,4 @@ export const genPath = (route: CustomRoute): CustomRoute => {
 
 export const menuItem = routes.map((child) => {
   return genPath(child);
-}) as MyRoute[];
+}) as RouteWithKey[];

@@ -3,9 +3,9 @@ import Profile, { ProfileProps } from "@/components/Profile";
 import { moviesData } from "@/data/data";
 import { ParsePropsFunc } from "@/hooks/HOC";
 import Layout from "@/layout";
+import { CustomRoute } from "@/models/route";
 import HomePage from "@/pages/home";
 import Products from "@/pages/Products";
-import { CustomRoute } from "@/types/route";
 import {
   BankOutlined,
   CoffeeOutlined,

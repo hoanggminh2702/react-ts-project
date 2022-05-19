@@ -18,4 +18,4 @@ export type CustomRoute = {
   defaultCloseChildren?: boolean;
 };
 
-export type MyRoute = RemoveOptionalProperty<CustomRoute, "key">;
+export type RouteWithKey = RemoveOptionalProperty<CustomRoute, "key">;

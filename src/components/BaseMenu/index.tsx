@@ -1,4 +1,4 @@
-import { MyRoute } from "@/types/route";
+import { RouteWithKey } from "@/models/route";
 import { AppstoreOutlined } from "@ant-design/icons";
 import { Menu, MenuProps } from "antd";
 import { ItemType } from "antd/lib/menu/hooks/useItems";
@@ -6,14 +6,14 @@ import React, { memo, useMemo } from "react";
 import { Link, useLocation } from "react-router-dom";
 
 // Gen Menu Item using recursive
-const genMenuItem = (routes: Array<MyRoute> | null[]): ItemType[] => {
+const genMenuItem = (routes: Array<RouteWithKey> | null[]): ItemType[] => {
   return routes.map((route) => {
     const Icon = route?.icon;
     if (route) {
       if (route.hideInMenu) return null;
       else {
         if (route.children && !route.hideChildren) {
-          const returnedChildren = [...route.children] as MyRoute[];
+          const returnedChildren = [...route.children] as RouteWithKey[];
           route.component &&
             returnedChildren.unshift({
               ...route,
@@ -28,7 +28,7 @@ const genMenuItem = (routes: Array<MyRoute> | null[]): ItemType[] => {
             ) : (
               route.name
             ),
-            children: genMenuItem(returnedChildren as MyRoute[]),
+            children: genMenuItem(returnedChildren as RouteWithKey[]),
           };
           return returnSubMenu;
         } else {
@@ -46,20 +46,20 @@ const genMenuItem = (routes: Array<MyRoute> | null[]): ItemType[] => {
   });
 };
 
-const genOpenSubMenuKeysArr = (routes: MyRoute[]): string[] => {
+const genOpenSubMenuKeysArr = (routes: RouteWithKey[]): string[] => {
   return routes.reduce((totalKeys, curRoute) => {
     if (curRoute.children && !curRoute.defaultCloseChildren) {
       return [
         ...totalKeys,
         `sub-${curRoute.path}`,
-        ...genOpenSubMenuKeysArr(curRoute.children as MyRoute[]),
+        ...genOpenSubMenuKeysArr(curRoute.children as RouteWithKey[]),
       ];
     } else return [...totalKeys];
   }, [] as string[]);
 };
 
 type Props = {
-  routes: Array<MyRoute>;
+  routes: Array<RouteWithKey>;
 } & Omit<MenuProps, "defaultOpenKeys" | "selectedKeys">;
 
 const BaseMenu = ({ routes, ...props }: Props) => {

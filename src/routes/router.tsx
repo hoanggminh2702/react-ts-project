@@ -1,6 +1,6 @@
-import RequiredAuth from "@/auth/RequiredAuth";
+import RequiredAuth from "@/components/auth/";
 import NotFound from "@/components/NotFound";
-import { MyRoute } from "@/types/route";
+import { RouteWithKey } from "@/models/route";
 import React, { FunctionComponent, ReactNode, ReactNodeArray } from "react";
 import {
   LayoutRouteProps,
@@ -11,12 +11,12 @@ import {
 } from "react-router-dom";
 import { menuItem } from "./routes";
 
-export const generateRoutes = (routes: MyRoute[]): ReactNodeArray => {
+export const generateRoutes = (routes: RouteWithKey[]): ReactNodeArray => {
   return routes.map((route) => {
     if (route.children) {
       return generateRoute({
         route,
-        children: generateRoutes(route.children as MyRoute[]),
+        children: generateRoutes(route.children as RouteWithKey[]),
       });
     }
     return generateRoute({ route });
@@ -27,7 +27,7 @@ type GenerateRouteProp = (
   | Omit<PathRouteProps, "element" | "path" | "children">
   | Omit<LayoutRouteProps, "element" | "path" | "children">
 ) & {
-  route: MyRoute;
+  route: RouteWithKey;
   children?: ReactNode;
 };
 
@@ -52,14 +52,16 @@ export const generateRoute = ({
 
     if (route.isRoot) {
       // Pass routes to children to gen menu item with root element
-      const passRoutes: MyRoute[] = [...(route.children as MyRoute[])];
+      const passRoutes: RouteWithKey[] = [
+        ...(route.children as RouteWithKey[]),
+      ];
       passRoutes.unshift({
         ...route,
         children: undefined,
         isRoot: undefined,
         layoutElement: undefined,
       });
-      Layout = () => <LayoutComponent routes={passRoutes as MyRoute[]} />;
+      Layout = () => <LayoutComponent routes={passRoutes as RouteWithKey[]} />;
     } else {
       Layout = route.layoutElement as FunctionComponent;
     }

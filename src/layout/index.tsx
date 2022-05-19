@@ -1,4 +1,4 @@
-import { MyRoute } from "@/types/route";
+import { RouteWithKey } from "@/models/route";
 import { DoubleRightOutlined } from "@ant-design/icons";
 import { Layout as AntLayout, PageHeader } from "antd";
 import { Footer } from "antd/lib/layout/layout";
@@ -12,7 +12,7 @@ import SocialContact from "./SocialContact";
 const { Sider, Content } = AntLayout;
 
 export type RootLayoutProps = {
-  routes: MyRoute[];
+  routes: RouteWithKey[];
 };
 
 type LayoutProps = RootLayoutProps;
@@ -51,7 +51,7 @@ const Layout: FunctionComponent<LayoutProps> = ({ routes }: LayoutProps) => {
                 }}
               />
             </div>
-            <BaseMenu routes={routes as MyRoute[]} />
+            <BaseMenu routes={routes as RouteWithKey[]} />
           </div>
         </Sider>
       </AntLayout>
