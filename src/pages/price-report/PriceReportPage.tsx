@@ -94,7 +94,7 @@ const PriceReportPage = (props: Props) => {
         />
       </div>
       <div className="list-anchor">
-        <Anchor>
+        <Anchor affix={false}>
           <Link href="#chup-hinh-doanh-nhan" title="Chụp hình doanh nhân" />
           <Link href="#chup-hinh-do-an" title="Chụp hình đồ ăn" />
           <Link

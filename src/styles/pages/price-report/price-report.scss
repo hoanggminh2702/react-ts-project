@@ -6,6 +6,11 @@
     .anchor-title {
       margin: 20px 10px;
     }
+    .ant-anchor-wrapper {
+      position: sticky;
+      top: calc($header-height + 5px);
+      left: 0;
+    }
   }
 
   .list-anchor {
